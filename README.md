@@ -1,36 +1,170 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SCONS - Soares Campos Optimized Navigation System
 
-## Getting Started
+Sistema de navegação otimizada para aplicações corporativas com login centralizado e controle de acesso hierárquico.
 
-First, run the development server:
+## 🚀 Tecnologias
+
+- **Next.js 15.5.3** - React Framework
+- **TypeScript** - Tipagem estática
+- **Tailwind CSS v4** - Framework CSS
+- **Framer Motion** - Animações
+- **React 19** - Interface de usuário
+
+## 📁 Estrutura do Projeto
+
+```
+src/
+├── app/                    # App Router (Next.js)
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── components/             # Componentes organizados por categoria
+│   ├── animations/         # Componentes de animação
+│   │   ├── BackgroundAnimation.tsx
+│   │   └── index.ts
+│   ├── layout/            # Componentes de layout
+│   │   ├── Footer.tsx
+│   │   └── index.ts
+│   ├── sections/          # Seções da página
+│   │   ├── ApplicationPreviewsSection.tsx
+│   │   ├── FeaturesSection.tsx
+│   │   ├── HeroSection.tsx
+│   │   └── index.ts
+│   ├── ui/                # Componentes de interface reutilizáveis
+│   │   ├── Button.tsx
+│   │   ├── Container.tsx
+│   │   └── index.ts
+│   └── index.ts          # Exportações centralizadas
+├── hooks/                 # Hooks customizados
+│   └── index.ts
+├── lib/                   # Utilitários e configurações
+│   ├── constants.ts
+│   └── utils.ts
+└── types/                 # Definições de tipos TypeScript
+    └── index.ts
+```
+
+## 🎨 Funcionalidades
+
+### ✅ Implementado
+
+- **Hero Section** com navegação e CTAs
+- **Seção de Recursos** com animações
+- **Previews de Aplicações** com placeholders
+- **Footer** completo com links e newsletter
+- **Animações de fundo** sutis e elegantes
+- **Design responsivo** para todos os dispositivos
+- **Modo escuro** automático
+- **Estrutura de componentes** escalável
+- **Sistema de tipagem** TypeScript
+- **Hooks customizados** reutilizáveis
+
+### 🔄 Recursos Principais
+
+- **Login Centralizado (SSO)** - Autenticação unificada
+- **Acesso Hierárquico** - Controle granular de permissões
+- **Previews de Aplicações** - Visualização antes do acesso
+
+## 🛠️ Desenvolvimento
+
+### Executar o projeto
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Build para produção
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Estrutura de Componentes
 
-## Learn More
+#### Exportações Centralizadas
 
-To learn more about Next.js, take a look at the following resources:
+Cada pasta de componentes possui um `index.ts` que centraliza as exportações:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```typescript
+// Importação limpa e organizada
+import { HeroSection, FeaturesSection } from "@/components";
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+#### Componentes UI Reutilizáveis
 
-## Deploy on Vercel
+```typescript
+import { Button, Container } from "@/components";
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+// Uso do Button com variantes
+<Button variant="primary" size="lg">
+  Acessar SCONS
+</Button>;
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#### Hooks Customizados
+
+```typescript
+import { useScrollPosition, useLocalStorage } from "@/hooks";
+
+const scrollY = useScrollPosition();
+const [theme, setTheme] = useLocalStorage("theme", "light");
+```
+
+## 📱 Design System
+
+### Cores
+
+- **Primárias**: Azul (#2563eb) e Roxo (#7c3aed)
+- **Neutras**: Escala de cinzas para textos e fundos
+- **Gradientes**: Utilizados em CTAs e elementos destacados
+
+### Tipografia
+
+- **Fonte principal**: Inter, Segoe UI, system-ui
+- **Escalas**: Responsivas com Tailwind CSS
+- **Pesos**: Regular (400), Semibold (600), Bold (700)
+
+### Animações
+
+- **Framer Motion** para transições suaves
+- **Configurações centralizadas** em `lib/constants.ts`
+- **Performance otimizada** com lazy loading
+
+## 🔧 Configuração
+
+### TypeScript
+
+Tipos personalizados definidos em `src/types/index.ts` para:
+
+- Props de componentes
+- Interfaces de dados
+- Configurações de animação
+
+### Tailwind CSS
+
+Configuração customizada com:
+
+- Scroll behavior suave
+- Scrollbar personalizada
+- Focus states aprimorados
+- Animações de gradiente
+
+## 🎯 Próximos Passos
+
+- [ ] Implementar sistema de autenticação
+- [ ] Adicionar roteamento para aplicações
+- [ ] Criar dashboard administrativo
+- [ ] Integrar com APIs backend
+- [ ] Adicionar testes unitários
+- [ ] Implementar PWA
+- [ ] Adicionar i18n (internacionalização)
+
+## 📄 Licença
+
+Este projeto é propriedade de Soares Campos.
+
+---
+
+**Desenvolvido por [Soares Campos](https://github.com/ICampos05) - 2025**

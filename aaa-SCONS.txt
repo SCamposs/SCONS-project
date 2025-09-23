@@ -1,4 +1,4 @@
 PROJETO NOVA
-    hero page com preview das aplicações de soluções que a empresa tem disponível
+    hero page com preview das aplicações de soluções que a empresa(possível cliente) tem disponível
 
     que além de todos os elementos de uma hero page, terá um botão de fazer login(será um login centralizado com hierarquia) e após o login, aí sim pessoa poderá acessar os sites disponíveis(dependendo da hierarquia, tais sites serão visíveis) e não só previews
