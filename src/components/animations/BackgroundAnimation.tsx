@@ -1,8 +1,35 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+
+interface Particle {
+  id: number;
+  left: number;
+  top: number;
+  animateX: number;
+  duration: number;
+  delay: number;
+}
 
 export default function BackgroundAnimation() {
+  const [particles, setParticles] = useState<Particle[]>([]);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    // Generate particles only on client side
+    const generatedParticles: Particle[] = [...Array(6)].map((_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      animateX: Math.random() * 50 - 25,
+      duration: 8 + Math.random() * 4,
+      delay: Math.random() * 2,
+    }));
+
+    setParticles(generatedParticles);
+    setMounted(true);
+  }, []);
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Animated gradient orbs */}
@@ -49,27 +76,28 @@ export default function BackgroundAnimation() {
       />
 
       {/* Floating particles */}
-      {[...Array(6)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-2 h-2 bg-gradient-to-r from-gray-400/20 to-gray-600/20 rounded-full"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-          }}
-          animate={{
-            y: [0, -100, 0],
-            x: [0, Math.random() * 50 - 25, 0],
-            opacity: [0.2, 0.8, 0.2],
-          }}
-          transition={{
-            duration: 8 + Math.random() * 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: Math.random() * 2,
-          }}
-        />
-      ))}
+      {mounted &&
+        particles.map((particle) => (
+          <motion.div
+            key={particle.id}
+            className="absolute w-2 h-2 bg-gradient-to-r from-gray-400/20 to-gray-600/20 rounded-full"
+            style={{
+              left: `${particle.left}%`,
+              top: `${particle.top}%`,
+            }}
+            animate={{
+              y: [0, -100, 0],
+              x: [0, particle.animateX, 0],
+              opacity: [0.2, 0.8, 0.2],
+            }}
+            transition={{
+              duration: particle.duration,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: particle.delay,
+            }}
+          />
+        ))}
     </div>
   );
 }
