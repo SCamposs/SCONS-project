@@ -3,22 +3,23 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { Lock, Users, Smartphone } from "lucide-react";
 
 const features = [
   {
-    icon: "🔐",
+    icon: Lock,
     title: "Login Centralizado",
     description:
       "Sistema de autenticação unificado (SSO) para acesso seguro a todas as aplicações com uma única credencial.",
   },
   {
-    icon: "👥",
+    icon: Users,
     title: "Acesso Hierárquico",
     description:
       "Controle granular de permissões baseado em níveis de hierarquia, garantindo que cada usuário acesse apenas o que precisa.",
   },
   {
-    icon: "📱",
+    icon: Smartphone,
     title: "Previews de Aplicações",
     description:
       "Visualize previews interativos das aplicações disponíveis antes de acessá-las, otimizando sua navegação.",
@@ -51,32 +52,85 @@ export default function FeaturesSection() {
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className="group relative"
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              className="group relative will-change-transform"
+              initial={{ opacity: 0, y: 50, rotateX: -15 }}
+              animate={
+                isInView
+                  ? { opacity: 1, y: 0, rotateX: 0 }
+                  : { opacity: 0, y: 50, rotateX: -15 }
+              }
               transition={{ duration: 0.8, delay: index * 0.2 }}
+              whileHover={{ y: -8, rotateY: 5 }}
+              style={{ perspective: "1000px" }}
             >
-              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200/50 dark:border-gray-700/50 h-full">
+              <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg rounded-3xl p-8 shadow-2xl hover:shadow-purple-500/20 transition-all duration-500 border border-gray-200/50 dark:border-gray-700/50 h-full relative overflow-hidden">
+                {/* Animated background gradient */}
                 <motion.div
-                  className="text-5xl mb-6 block"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {feature.icon}
-                </motion.div>
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background: `linear-gradient(135deg, 
+                      rgba(59, 130, 246, 0.1) 0%, 
+                      rgba(147, 51, 234, 0.1) 50%, 
+                      rgba(236, 72, 153, 0.1) 100%)`,
+                  }}
+                />
 
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                  {feature.title}
-                </h3>
+                {/* Floating particles effect */}
+                <div className="absolute inset-0 overflow-hidden rounded-3xl">
+                  {[...Array(6)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute w-1 h-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-0 group-hover:opacity-60"
+                      style={{
+                        left: `${Math.random() * 100}%`,
+                        top: `${Math.random() * 100}%`,
+                      }}
+                      animate={{
+                        y: [-10, -30, -10],
+                        opacity: [0, 0.6, 0],
+                      }}
+                      transition={{
+                        duration: 3 + Math.random() * 2,
+                        repeat: Infinity,
+                        delay: Math.random() * 2,
+                      }}
+                    />
+                  ))}
+                </div>
 
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {feature.description}
-                </p>
+                <div className="relative z-10">
+                  <motion.div
+                    className="mb-6 flex justify-center"
+                    whileHover={{
+                      scale: 1.2,
+                      rotate: [0, -5, 5, 0],
+                      filter: "drop-shadow(0 0 20px rgba(59, 130, 246, 0.5))",
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <feature.icon className="w-16 h-16 text-blue-500" />
+                  </motion.div>
 
-                {/* Hover effect background */}
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
+                    {feature.title}
+                  </h3>
+
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300">
+                    {feature.description}
+                  </p>
+
+                  {/* Progress indicator */}
+                  <motion.div className="mt-6 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                </div>
+
+                {/* Glow effect */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  initial={false}
+                  className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500"
+                  style={{
+                    background:
+                      "radial-gradient(circle at center, rgba(59, 130, 246, 0.3), transparent 70%)",
+                    filter: "blur(20px)",
+                  }}
                 />
               </div>
             </motion.div>

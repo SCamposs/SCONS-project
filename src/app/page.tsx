@@ -8,9 +8,15 @@ import {
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800">
+    <div className="relative min-h-screen overflow-hidden">
+      {/* Main background with gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-950 dark:via-blue-950 dark:to-indigo-950" />
+      
+      {/* Animated background elements */}
       <BackgroundAnimation />
-      <div className="relative z-10">
+      
+      {/* Content */}
+      <div className="relative z-10 will-change-scroll">
         <HeroSection />
         <FeaturesSection />
         <ApplicationPreviewsSection />

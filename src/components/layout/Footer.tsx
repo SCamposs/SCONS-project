@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -45,7 +46,15 @@ export default function Footer() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-3xl font-bold mb-4">SCONS</h3>
+              <div className="flex items-center mb-4">
+                <Image
+                  src="/logo-white.png"
+                  alt="SCONS Logo"
+                  width={528}
+                  height={151}
+                  className="mr-3 h-10 w-auto -translate-x-[6px]"
+                />
+              </div>
               <p className="text-gray-400 mb-6 max-w-md">
                 Sistema de navegação otimizada para aplicações corporativas.
                 Simplifique o acesso e otimize a produtividade da sua equipe.
@@ -156,7 +165,7 @@ export default function Footer() {
               Desenvolvido por Soares Campos
             </span>
             <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              <div className="w-2 h-2 bg-green-500 rounded-full" />
               <span className="text-gray-400 text-sm">Sistema Online</span>
             </div>
           </div>

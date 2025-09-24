@@ -32,9 +32,12 @@ export default function BackgroundAnimation() {
   }, []);
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Main gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-100/50 dark:from-gray-950 dark:via-blue-950/30 dark:to-indigo-950/50" />
+
       {/* Animated gradient orbs */}
       <motion.div
-        className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-full blur-3xl"
+        className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-3xl will-change-transform"
         animate={{
           x: [0, 100, 0],
           y: [0, -50, 0],
@@ -48,7 +51,7 @@ export default function BackgroundAnimation() {
       />
 
       <motion.div
-        className="absolute top-3/4 right-1/4 w-48 h-48 bg-gradient-to-r from-green-400/10 to-blue-400/10 rounded-full blur-3xl"
+        className="absolute top-3/4 right-1/4 w-80 h-80 bg-gradient-to-r from-emerald-400/20 to-cyan-400/20 rounded-full blur-3xl will-change-transform"
         animate={{
           x: [0, -80, 0],
           y: [0, 60, 0],
@@ -62,7 +65,7 @@ export default function BackgroundAnimation() {
       />
 
       <motion.div
-        className="absolute top-1/2 right-1/3 w-32 h-32 bg-gradient-to-r from-indigo-400/8 to-pink-400/8 rounded-full blur-2xl"
+        className="absolute top-1/2 right-1/3 w-64 h-64 bg-gradient-to-r from-indigo-400/15 to-pink-400/15 rounded-full blur-2xl will-change-transform"
         animate={{
           x: [0, 60, 0],
           y: [0, -80, 0],
@@ -80,7 +83,7 @@ export default function BackgroundAnimation() {
         particles.map((particle) => (
           <motion.div
             key={particle.id}
-            className="absolute w-2 h-2 bg-gradient-to-r from-gray-400/20 to-gray-600/20 rounded-full"
+            className="absolute w-2 h-2 bg-gradient-to-r from-blue-400/30 to-purple-400/30 rounded-full will-change-transform"
             style={{
               left: `${particle.left}%`,
               top: `${particle.top}%`,
@@ -98,6 +101,37 @@ export default function BackgroundAnimation() {
             }}
           />
         ))}
+
+      <motion.div
+        className="absolute bottom-32 right-1/3 w-6 h-6 border-2 border-purple-400/40 rounded-full will-change-transform"
+        animate={{
+          scale: [1, 1.5, 1],
+          rotate: [0, 180, 360],
+          opacity: [0.4, 0.8, 0.4],
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      <style jsx>{`
+        @keyframes drift {
+          0% {
+            transform: translate(0px, 0px) rotate(0deg);
+          }
+          33% {
+            transform: translate(30px, -30px) rotate(120deg);
+          }
+          66% {
+            transform: translate(-20px, 20px) rotate(240deg);
+          }
+          100% {
+            transform: translate(0px, 0px) rotate(360deg);
+          }
+        }
+      `}</style>
     </div>
   );
 }
