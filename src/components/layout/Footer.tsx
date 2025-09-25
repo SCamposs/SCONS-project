@@ -35,9 +35,9 @@ function Footer() {
 
   return (
     <footer className="bg-gray-900 dark:bg-gray-950 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Main footer content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
           {/* Brand section */}
           <div className="lg:col-span-2">
             <motion.div
@@ -46,27 +46,27 @@ function Footer() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <div className="flex items-center mb-4">
+              <div className="flex items-center mb-3">
                 <Image
                   src="/logo-white.png"
                   alt="SCONS Logo"
                   width={528}
                   height={151}
-                  className="mr-3 h-10 w-auto -translate-x-[6px]"
+                  className="mr-3 h-8 w-auto -translate-x-[6px]"
                 />
               </div>
-              <p className="text-gray-400 mb-6 max-w-md">
+              <p className="text-gray-400 mb-4 max-w-md text-sm">
                 Sistema de navegação otimizada para aplicações corporativas.
                 Simplifique o acesso e otimize a produtividade da sua equipe.
               </p>
 
               {/* Social links */}
-              <div className="flex space-x-4">
+              <div className="flex space-x-3">
                 {["LinkedIn", "Twitter", "GitHub"].map((social, index) => (
                   <motion.a
                     key={social}
                     href="#"
-                    className="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-full flex items-center justify-center transition-colors duration-300"
+                    className="w-8 h-8 bg-gray-800 hover:bg-gray-700 rounded-full flex items-center justify-center transition-colors duration-300 will-change-transform"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     initial={{ opacity: 0, y: 20 }}
@@ -74,7 +74,7 @@ function Footer() {
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <span className="text-sm font-bold">
+                    <span className="text-xs font-bold">
                       {social.charAt(0)}
                     </span>
                   </motion.a>
@@ -93,15 +93,15 @@ function Footer() {
                 transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
                 viewport={{ once: true }}
               >
-                <h4 className="font-semibold text-white mb-4 capitalize">
+                <h4 className="font-semibold text-white mb-3 capitalize text-sm">
                   {category}
                 </h4>
-                <ul className="space-y-3">
+                <ul className="space-y-2">
                   {links.map((link) => (
                     <li key={link.name}>
                       <motion.a
                         href={link.href}
-                        className="text-gray-400 hover:text-white transition-colors duration-300"
+                        className="text-gray-400 hover:text-white transition-colors duration-300 text-sm"
                         whileHover={{ x: 5 }}
                         transition={{ duration: 0.2 }}
                       >
@@ -117,16 +117,16 @@ function Footer() {
 
         {/* Newsletter section */}
         <motion.div
-          className="mt-12 pt-8 border-t border-gray-800"
+          className="mt-10 pt-6 border-t border-gray-800"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
             <div>
-              <h4 className="text-xl font-semibold mb-2">Fique Atualizado</h4>
-              <p className="text-gray-400">
+              <h4 className="text-lg font-semibold mb-2">Fique Atualizado</h4>
+              <p className="text-gray-400 text-sm">
                 Receba as últimas novidades e atualizações do SCONS
               </p>
             </div>
@@ -135,10 +135,10 @@ function Footer() {
               <input
                 type="email"
                 placeholder="Seu e-mail"
-                className="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 transition-colors duration-300"
+                className="flex-1 px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 transition-colors duration-300 text-sm"
               />
               <motion.button
-                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium transition-colors duration-300"
+                className="px-5 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium transition-colors duration-300 will-change-transform text-sm"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -150,7 +150,7 @@ function Footer() {
 
         {/* Bottom section */}
         <motion.div
-          className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center"
+          className="mt-8 pt-6 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}

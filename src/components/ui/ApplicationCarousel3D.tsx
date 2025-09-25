@@ -226,7 +226,7 @@ const ApplicationCarousel3D = ({
 
           {/* Navigation Buttons */}
           <button
-            className="absolute left-8 top-1/2 -translate-y-1/2 text-white hover:text-blue-300 z-40 transition-all hover:scale-110 hover:-translate-x-1"
+            className="absolute left-8 top-1/2 -translate-y-1/2 text-white hover:text-blue-300 z-40 transition-all hover:scale-110 hover:-translate-x-1 will-change-transform"
             onClick={() =>
               setActive((prev) => (prev - 1 + items.length) % items.length)
             }
@@ -236,7 +236,7 @@ const ApplicationCarousel3D = ({
           </button>
 
           <button
-            className="absolute right-8 top-1/2 -translate-y-1/2 text-white hover:text-blue-300 z-40 transition-all hover:scale-110 hover:translate-x-1"
+            className="absolute right-8 top-1/2 -translate-y-1/2 text-white hover:text-blue-300 z-40 transition-all hover:scale-110 hover:translate-x-1 will-change-transform"
             onClick={() => setActive((prev) => (prev + 1) % items.length)}
             aria-label="Next"
           >

@@ -36,7 +36,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       lg: "px-8 py-4 text-lg",
     };
 
-    const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
+    const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} will-change-transform ${className}`;
 
     return (
       <motion.button
