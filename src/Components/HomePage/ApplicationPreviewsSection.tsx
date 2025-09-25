@@ -1,8 +1,18 @@
 "use client";
 
-import ThreeDCarousel, { ThreeDCarouselItem } from "../lightswind/3d-carousel";
+import MergedApplicationCarousel from "../ui/MergedApplicationCarousel";
 
-const applicationPreviews: ThreeDCarouselItem[] = [
+interface ApplicationItem {
+  id: number;
+  title: string;
+  brand: string;
+  description: string;
+  tags: string[];
+  imageUrl: string;
+  link: string;
+}
+
+const applicationPreviews: ApplicationItem[] = [
   {
     id: 1,
     title: "Dashboard Executivo",
@@ -97,14 +107,45 @@ const applicationPreviews: ThreeDCarouselItem[] = [
 
 export default function ApplicationPreviewsSection() {
   return (
-    <ThreeDCarousel
-      items={applicationPreviews}
-      title="Aplicações SCONS"
-      subtitle="Soluções Corporativas"
-      tagline="Explore nosso ecossistema completo de aplicações empresariais desenvolvidas para otimizar sua operação."
-      autoRotate={true}
-      rotateInterval={5000}
-      cardHeight={400}
-    />
+    <section
+      className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+      style={{
+        background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      }}
+    >
+      {/* Blurred background version of current image */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center blur-3xl opacity-30 scale-110"
+          style={{
+            backgroundImage: `url(${applicationPreviews[0]?.imageUrl})`,
+            filter: "blur(60px) saturate(150%)",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/50 via-purple-800/30 to-blue-900/50" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <div className="flex items-center justify-center mb-6">
+            <h2 className="text-3xl sm:text-4xl font-base text-white">
+              Aplicações SCONS
+            </h2>
+          </div>
+          <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full text-lg font-medium mb-6 text-white">
+            Soluções Corporativas
+          </div>
+          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+            Explore nosso ecossistema completo de aplicações empresariais desenvolvidas para otimizar sua operação.
+          </p>
+        </div>
+
+        <MergedApplicationCarousel
+          items={applicationPreviews}
+          autoRotate={true}
+          rotateInterval={5000}
+        />
+      </div>
+    </section>
   );
 }
