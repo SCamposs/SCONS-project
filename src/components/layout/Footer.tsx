@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-export default function Footer() {
+function Footer() {
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
@@ -174,3 +174,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export { Footer };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface CardProps {
   children: React.ReactNode;
@@ -10,18 +10,18 @@ interface CardContentProps {
   className?: string;
 }
 
-export function Card({ children, className = '' }: CardProps) {
+function Card({ children, className = "" }: CardProps) {
   return (
-    <div className={`bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm ${className}`}>
+    <div
+      className={`bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm ${className}`}
+    >
       {children}
     </div>
   );
 }
 
-export function CardContent({ children, className = '' }: CardContentProps) {
-  return (
-    <div className={className}>
-      {children}
-    </div>
-  );
+function CardContent({ children, className = "" }: CardContentProps) {
+  return <div className={className}>{children}</div>;
 }
+
+export { Card, CardContent };

@@ -1,8 +1,9 @@
 "use client";
 
-import ApplicationCarousel3D, {
+import {
+  ApplicationCarousel3D,
   ApplicationItem,
-} from "../UI/ApplicationCarousel3D";
+} from "../ui/ApplicationCarousel3D";
 
 const applicationPreviews: ApplicationItem[] = [
   {

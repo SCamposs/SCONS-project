@@ -298,4 +298,4 @@ const ApplicationCarousel3D = ({
   );
 };
 
-export default ApplicationCarousel3D;
+export { ApplicationCarousel3D };

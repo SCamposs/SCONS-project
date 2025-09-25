@@ -1,5 +1,5 @@
 // SCONS Project Constants
-export const SCONS_CONFIG = {
+const SCONS_CONFIG = {
   name: "SCONS",
   fullName: "Soares Campos Optimized Navigation System",
   description: "Sistema de navegação otimizada para aplicações corporativas",
@@ -11,7 +11,7 @@ export const SCONS_CONFIG = {
   },
 } as const;
 
-export const ANIMATION_SETTINGS = {
+const ANIMATION_SETTINGS = {
   duration: {
     fast: 0.2,
     normal: 0.3,
@@ -25,7 +25,7 @@ export const ANIMATION_SETTINGS = {
   },
 } as const;
 
-export const BREAKPOINTS = {
+const BREAKPOINTS = {
   sm: "640px",
   md: "768px",
   lg: "1024px",
@@ -33,7 +33,7 @@ export const BREAKPOINTS = {
   "2xl": "1536px",
 } as const;
 
-export const COLORS = {
+const COLORS = {
   primary: {
     blue: "#2563eb",
     purple: "#7c3aed",
@@ -45,3 +45,5 @@ export const COLORS = {
     900: "#111827",
   },
 } as const;
+
+export { SCONS_CONFIG, ANIMATION_SETTINGS, BREAKPOINTS, COLORS };

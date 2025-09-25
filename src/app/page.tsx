@@ -1,10 +1,8 @@
-import {
-  HeroSection,
-  FeaturesSection,
-  ApplicationPreviewsSection,
-} from "@/Components/HomePage";
-import { Footer } from "@/Components/Layout";
-import { BackgroundAnimation } from "@/Components/Animations";
+import HeroSection from "@/components/HomePage/HeroSection";
+import FeaturesSection from "@/components/HomePage/FeaturesSection";
+import ApplicationPreviewsSection from "@/components/HomePage/ApplicationPreviewsSection";
+import { Footer } from "@/components/layout/Footer";
+import BackgroundAnimation from "@/components/animations/BackgroundAnimation";
 
 export default function Home() {
   return (
