@@ -31,11 +31,7 @@ export default function HeroSection() {
             />
           </motion.div>
 
-          <motion.button
-            className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full font-medium hover:shadow-lg transition-all duration-300 will-change-transform border border-white/20 backdrop-blur-sm text-sm"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
+          <motion.button className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full font-medium hover:shadow-lg transition-all duration-300 will-change-transform border border-white/20 backdrop-blur-sm text-sm">
             Entrar
           </motion.button>
         </div>
@@ -166,7 +162,7 @@ export default function HeroSection() {
           ].map((stat, index) => (
             <motion.div
               key={index}
-              className="text-center p-4 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 will-change-transform"
+              className="text-center p-4 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 will-change-transform"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >

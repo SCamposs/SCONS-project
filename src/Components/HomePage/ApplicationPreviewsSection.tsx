@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import MergedApplicationCarousel from "../ui/MergedApplicationCarousel";
 
 interface ApplicationItem {
@@ -129,14 +130,22 @@ export default function ApplicationPreviewsSection() {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center mb-6">
             <h2 className="text-3xl sm:text-4xl font-base text-white">
-              Aplicações SCONS
+              Aplicações{" "}
+              <Image
+                src="/logo-white.png"
+                alt="SCONS"
+                width={528}
+                height={121}
+                className="inline-block h-8 w-auto ml-2 mb-1"
+              />
             </h2>
           </div>
           <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full text-lg font-medium mb-6 text-white">
             Soluções Corporativas
           </div>
           <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-            Explore nosso ecossistema completo de aplicações empresariais desenvolvidas para otimizar sua operação.
+            Explore nosso ecossistema completo de aplicações empresariais
+            desenvolvidas para otimizar sua operação.
           </p>
         </div>
 
