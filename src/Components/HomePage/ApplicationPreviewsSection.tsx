@@ -2,7 +2,7 @@
 
 import ApplicationCarousel3D, {
   ApplicationItem,
-} from "../ui/ApplicationCarousel3D";
+} from "../UI/ApplicationCarousel3D";
 
 const applicationPreviews: ApplicationItem[] = [
   {

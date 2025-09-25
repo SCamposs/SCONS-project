@@ -77,22 +77,29 @@ export default function FeaturesSection() {
 
                 {/* Floating particles effect */}
                 <div className="absolute inset-0 overflow-hidden rounded-3xl">
-                  {[...Array(6)].map((_, i) => (
+                  {[
+                    { left: 15, top: 20, duration: 3.2, delay: 0.3 },
+                    { left: 85, top: 15, duration: 4.1, delay: 1.2 },
+                    { left: 25, top: 75, duration: 3.8, delay: 0.8 },
+                    { left: 70, top: 60, duration: 4.5, delay: 1.6 },
+                    { left: 45, top: 35, duration: 3.5, delay: 0.5 },
+                    { left: 90, top: 85, duration: 4.2, delay: 1.0 },
+                  ].map((particle, i) => (
                     <motion.div
                       key={i}
                       className="absolute w-1 h-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-0 group-hover:opacity-60"
                       style={{
-                        left: `${Math.random() * 100}%`,
-                        top: `${Math.random() * 100}%`,
+                        left: `${particle.left}%`,
+                        top: `${particle.top}%`,
                       }}
                       animate={{
                         y: [-10, -30, -10],
                         opacity: [0, 0.6, 0],
                       }}
                       transition={{
-                        duration: 3 + Math.random() * 2,
+                        duration: particle.duration,
                         repeat: Infinity,
-                        delay: Math.random() * 2,
+                        delay: particle.delay,
                       }}
                     />
                   ))}

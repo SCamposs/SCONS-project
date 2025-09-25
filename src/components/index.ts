@@ -1,11 +1,11 @@
-// Layout Components
-export * from "./layout";
+// HomePage Components
+export * from "./HomePage";
 
-// Section Components
-export * from "./sections";
+// Layout Components
+export * from "./Layout";
 
 // Animation Components
-export * from "./animations";
+export * from "./Animations";
 
-// UI Components (for future expansion)
-export * from "./ui";
+// UI Components
+export * from "./UI";
