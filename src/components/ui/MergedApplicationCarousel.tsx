@@ -135,39 +135,39 @@ const MergedApplicationCarousel = ({
               }}
             >
               <Card
-                className={`overflow-hidden bg-white/95 backdrop-blur-md h-[480px] border-0 flex flex-col group rounded-2xl transition-all duration-500 hover:scale-105 ${
+                className={`overflow-hidden bg-gray-900/95 backdrop-blur-md h-[480px] border border-white/10 flex flex-col group rounded-2xl transition-all duration-500 hover:scale-105 ${
                   index === active
-                    ? "shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25),0_0_0_1px_rgba(255,255,255,0.5)]"
-                    : "shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)] hover:shadow-3xl"
+                    ? "shadow-[0_25px_50px_-12px_rgba(255,255,255,0.1),0_0_0_1px_rgba(255,255,255,0.2)]"
+                    : "shadow-[0_20px_25px_-5px_rgba(0,0,0,0.5),0_10px_10px_-5px_rgba(0,0,0,0.3)] hover:shadow-[0_30px_40px_-5px_rgba(255,255,255,0.05)]"
                 }`}
               >
                 <div
-                  className="relative h-64 overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 rounded-t-2xl"
+                  className="relative h-64 overflow-hidden bg-gradient-to-br from-black to-gray-900 rounded-t-2xl"
                   style={{
                     backgroundImage: `url(${item.imageUrl})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/40" />
                   <div className="absolute inset-0 p-7 flex flex-col justify-end text-white">
                     <div className="transform transition-all duration-700 group-hover:translate-y-[-4px]">
-                      <div className="text-xs uppercase tracking-[0.1em] text-gray-200 mb-3 font-medium opacity-90">
+                      <div className="text-xs uppercase tracking-[0.1em] text-gray-300 mb-3 font-medium opacity-90">
                         {item.brand}
                       </div>
-                      <h3 className="text-xl font-bold leading-tight mb-1 tracking-tight">
+                      <h3 className="text-xl font-bold leading-tight mb-1 tracking-tight text-white drop-shadow-md">
                         {item.title}
                       </h3>
-                      <div className="w-12 h-0.5 bg-white/60 rounded-full"></div>
+                      <div className="w-12 h-0.5 bg-white/80 rounded-full drop-shadow-sm"></div>
                     </div>
                   </div>
 
                   {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
 
-                <CardContent className="p-7 flex flex-col flex-grow">
-                  <p className="text-gray-700 text-base flex-grow leading-relaxed font-medium mb-4">
+                <CardContent className="p-7 flex flex-col flex-grow bg-gray-900/50">
+                  <p className="text-gray-200 text-base flex-grow leading-relaxed font-medium mb-4">
                     {item.description}
                   </p>
 
@@ -176,7 +176,7 @@ const MergedApplicationCarousel = ({
                     {item.tags.slice(0, 3).map((tag, idx) => (
                       <span
                         key={idx}
-                        className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-medium border border-blue-100"
+                        className="px-3 py-1 bg-white/10 text-gray-300 rounded-full text-xs font-medium border border-white/20 backdrop-blur-sm"
                       >
                         {tag}
                       </span>
@@ -184,12 +184,12 @@ const MergedApplicationCarousel = ({
                   </div>
 
                   <div className="mt-auto">
-                    <div className="flex items-center justify-between p-4 bg-gray-50/80 rounded-xl border border-gray-100/50">
-                      <span className="text-xs text-gray-600 uppercase tracking-[0.1em] font-semibold">
+                    <div className="flex items-center justify-between p-4 bg-black/30 rounded-xl border border-white/10 backdrop-blur-sm">
+                      <span className="text-xs text-gray-400 uppercase tracking-[0.1em] font-semibold">
                         Solução Tecnológica
                       </span>
-                      <div className="flex items-center text-gray-400 group-hover:text-gray-600 transition-colors duration-300">
-                        <div className="w-2 h-2 bg-gray-400 rounded-full mr-2 group-hover:bg-gray-600 transition-colors duration-300"></div>
+                      <div className="flex items-center text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+                        <div className="w-2 h-2 bg-white/60 rounded-full mr-2 group-hover:bg-white/80 transition-colors duration-300 shadow-sm"></div>
                         <span className="text-xs font-medium">
                           Clique para explorar
                         </span>
@@ -205,32 +205,30 @@ const MergedApplicationCarousel = ({
         {/* Navigation Arrows*/}
         <button
           className="absolute left-1 top-1/2 -translate-y-1/2 z-40 
-                       w-15 h-15 rounded-full bg-transparent 
+                       w-15 h-15 rounded-full 
                        flex items-center justify-center
-                       text-gray-900 hover:text-gray-800 
-                       border-none 
+                       text-white/70 hover:text-white 
                        transition-all duration-200 hover:scale-110
                        group-hover:opacity-100
-                       transform hover:translate-x-[-3px] focus:outline-none"
+                       transform hover:translate-x-[-3px] focus:outline-none shadow-lg"
           onClick={(e) => handleArrowClick("prev", e)}
           aria-label="Previous"
         >
-          <ChevronLeft className="w-5 h-5" />
+          <ChevronLeft className="w-5 h-5 drop-shadow-sm" />
         </button>
 
         <button
           className="absolute right-1 top-1/2 -translate-y-1/2 z-40 
-                       w-15 h-15 rounded-full bg-transparent 
-                       flex items-center justify-center
-                       text-gray-900 hover:text-gray-800 
-                       border-none 
-                       transition-all duration-200 hover:scale-110
-                       group-hover:opacity-100
-                       transform hover:translate-x-[3px] focus:outline-none"
+                 w-15 h-15 rounded-full 
+                 flex items-center justify-center
+                 text-white/70 hover:text-white 
+                 transition-all duration-200 hover:scale-110
+                 group-hover:opacity-100
+                 transform hover:translate-x-[3px] focus:outline-none shadow-lg"
           onClick={(e) => handleArrowClick("next", e)}
           aria-label="Next"
         >
-          <ChevronRight className="w-5 h-5" />
+          <ChevronRight className="w-5 h-5 drop-shadow-sm" />
         </button>
 
         {/* Indicators */}
@@ -238,10 +236,10 @@ const MergedApplicationCarousel = ({
           {items.map((_, idx) => (
             <button
               key={idx}
-              className={`rounded-full transition-all duration-500 ease-out hover:scale-125 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 ${
+              className={`rounded-full transition-all duration-500 ease-out hover:scale-125 focus:outline-none focus:ring-2 focus:ring-white/30 focus:ring-offset-2 focus:ring-offset-black ${
                 active === idx
-                  ? "bg-gray-900 w-10 h-2 shadow-md"
-                  : "bg-gray-400 hover:bg-gray-600 w-2 h-2 hover:w-3"
+                  ? "bg-white w-10 h-2 shadow-lg shadow-white/20"
+                  : "bg-white/40 hover:bg-white/70 w-2 h-2 hover:w-3"
               }`}
               onClick={() => setActive(idx)}
               aria-label={`Go to application ${idx + 1}`}

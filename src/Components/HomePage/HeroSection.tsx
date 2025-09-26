@@ -12,7 +12,7 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Navigation */}
       <motion.nav
-        className="absolute top-0 left-0 right-0 z-20 p-4 backdrop-blur-sm bg-white/10"
+        className="absolute top-0 left-0 right-0 z-20 p-4 backdrop-blur-sm bg-black/20 border-b border-white/10"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -31,7 +31,7 @@ export default function HeroSection() {
             />
           </motion.div>
 
-          <motion.button className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full font-medium hover:shadow-lg transition-all duration-300 will-change-transform border border-white/20 backdrop-blur-sm text-sm">
+          <motion.button className="px-4 py-2 bg-white/10 backdrop-blur-sm text-white rounded-full font-medium hover:bg-white/20 hover:shadow-lg hover:shadow-white/10 transition-all duration-300 will-change-transform border border-white/30 text-sm">
             Entrar
           </motion.button>
         </div>
@@ -40,7 +40,7 @@ export default function HeroSection() {
       {/* Floating Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute top-1/4 -left-20 w-72 h-72 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-3xl will-change-transform"
+          className="absolute top-1/4 -left-20 w-72 h-72 bg-gradient-to-r from-white/5 to-gray-300/10 rounded-full blur-3xl will-change-transform"
           animate={{
             x: [0, 50, 0],
             y: [0, -30, 0],
@@ -53,7 +53,7 @@ export default function HeroSection() {
           }}
         />
         <motion.div
-          className="absolute bottom-1/4 -right-20 w-64 h-64 bg-gradient-to-r from-indigo-400/20 to-pink-400/20 rounded-full blur-3xl will-change-transform"
+          className="absolute bottom-1/4 -right-20 w-64 h-64 bg-gradient-to-r from-gray-400/8 to-white/8 rounded-full blur-3xl will-change-transform"
           animate={{
             x: [0, -40, 0],
             y: [0, 40, 0],
@@ -90,22 +90,22 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
-            <span className="block text-lg sm:text-xl lg:text-2xl font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 opacity-95">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight drop-shadow-lg">
+            <span className="block text-lg sm:text-xl lg:text-2xl font-medium text-gray-300 opacity-95">
               Soares Campos Optimized Navigation System
             </span>
           </h1>
         </motion.div>
 
         <motion.p
-          className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
+          className="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           Plataforma unificada que conecta, gerencia e otimiza todas as suas
           aplicações empresariais.
-          <span className="block mt-1 text-base text-gray-500 dark:text-gray-400">
+          <span className="block mt-1 text-base text-gray-400">
             Controle total com acesso hierárquico inteligente
           </span>
         </motion.p>
@@ -117,7 +117,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           <motion.button
-            className="group px-8 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white rounded-xl font-bold text-lg shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 min-w-[200px] backdrop-blur-sm border border-white/20 will-change-transform relative overflow-hidden"
+            className="group px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-bold text-lg shadow-2xl hover:shadow-white/10 transition-all duration-300 min-w-[200px] border border-white/30 will-change-transform relative overflow-hidden hover:bg-white/20"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onHoverStart={() => setIsHovered(true)}
@@ -133,11 +133,11 @@ export default function HeroSection() {
                 <ArrowRight className="w-5 h-5" />
               </motion.span>
             </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </motion.button>
 
           <motion.button
-            className="px-8 py-4 bg-white/10 backdrop-blur-md border-2 border-white/30 text-gray-800 dark:text-white rounded-xl font-bold text-lg hover:bg-white/20 hover:border-white/50 transition-all duration-300 min-w-[200px] will-change-transform"
+            className="px-8 py-4 bg-black/30 backdrop-blur-md border-2 border-white/20 text-white rounded-xl font-bold text-lg hover:bg-black/50 hover:border-white/40 transition-all duration-300 min-w-[200px] will-change-transform"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -162,17 +162,17 @@ export default function HeroSection() {
           ].map((stat, index) => (
             <motion.div
               key={index}
-              className="text-center p-4 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 will-change-transform"
+              className="text-center p-4 bg-black/20 backdrop-blur-md rounded-xl border border-white/20 will-change-transform hover:bg-black/30"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
               <div className="mb-2 flex justify-center">
-                <stat.icon className="w-6 h-6 text-blue-500" />
+                <stat.icon className="w-6 h-6 text-white/80" />
               </div>
-              <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+              <div className="text-2xl font-bold text-white mb-1 drop-shadow-sm">
                 {stat.number}
               </div>
-              <div className="text-gray-600 dark:text-gray-300 font-medium text-sm">
+              <div className="text-gray-300 font-medium text-sm">
                 {stat.label}
               </div>
             </motion.div>
@@ -192,12 +192,12 @@ export default function HeroSection() {
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             whileHover={{ scale: 1.1 }}
           >
-            <div className="text-sm text-gray-500 dark:text-gray-400 mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors">
+            <div className="text-sm text-gray-400 mb-2 group-hover:text-gray-200 transition-colors">
               Explore mais
             </div>
-            <div className="w-8 h-12 border-2 border-gray-400/50 dark:border-gray-500/50 rounded-full flex justify-center group-hover:border-gray-600 dark:group-hover:border-gray-300 transition-colors bg-white/10 backdrop-blur-sm">
+            <div className="w-8 h-12 border-2 border-white/30 rounded-full flex justify-center group-hover:border-white/60 transition-colors bg-black/20 backdrop-blur-sm">
               <motion.div
-                className="w-1.5 h-4 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full mt-2"
+                className="w-1.5 h-4 bg-gradient-to-b from-white/80 to-gray-300/80 rounded-full mt-2 drop-shadow-sm"
                 animate={{
                   opacity: [0.3, 1, 0.3],
                   scaleY: [0.5, 1, 0.5],

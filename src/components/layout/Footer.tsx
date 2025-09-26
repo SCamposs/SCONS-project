@@ -34,7 +34,7 @@ function Footer() {
   };
 
   return (
-    <footer className="bg-gray-900 dark:bg-gray-950 text-white">
+    <footer className="bg-black border-t border-white/10 text-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Main footer content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
@@ -66,7 +66,7 @@ function Footer() {
                   <motion.a
                     key={social}
                     href="#"
-                    className="w-8 h-8 bg-gray-800 hover:bg-gray-700 rounded-full flex items-center justify-center transition-colors duration-300 will-change-transform"
+                    className="w-8 h-8 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full flex items-center justify-center transition-colors duration-300 will-change-transform backdrop-blur-sm"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     initial={{ opacity: 0, y: 20 }}
@@ -74,7 +74,7 @@ function Footer() {
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <span className="text-xs font-bold">
+                    <span className="text-xs font-bold text-white">
                       {social.charAt(0)}
                     </span>
                   </motion.a>
@@ -101,7 +101,7 @@ function Footer() {
                     <li key={link.name}>
                       <motion.a
                         href={link.href}
-                        className="text-gray-400 hover:text-white transition-colors duration-300 text-sm"
+                        className="text-gray-400 hover:text-gray-200 transition-colors duration-300 text-sm"
                         whileHover={{ x: 5 }}
                         transition={{ duration: 0.2 }}
                       >
@@ -117,7 +117,7 @@ function Footer() {
 
         {/* Newsletter section */}
         <motion.div
-          className="mt-10 pt-6 border-t border-gray-800"
+          className="mt-10 pt-6 border-t border-white/10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -135,10 +135,10 @@ function Footer() {
               <input
                 type="email"
                 placeholder="Seu e-mail"
-                className="flex-1 px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 transition-colors duration-300 text-sm"
+                className="flex-1 px-3 py-2 bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg focus:outline-none focus:border-white/40 transition-colors duration-300 text-sm text-white placeholder:text-gray-400"
               />
               <motion.button
-                className="px-5 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium transition-colors duration-300 will-change-transform text-sm"
+                className="px-5 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg font-medium transition-colors duration-300 will-change-transform text-sm text-white backdrop-blur-sm"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -150,7 +150,7 @@ function Footer() {
 
         {/* Bottom section */}
         <motion.div
-          className="mt-8 pt-6 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center"
+          className="mt-8 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
@@ -165,7 +165,7 @@ function Footer() {
               Desenvolvido por Soares Campos
             </span>
             <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full" />
+              <div className="w-2 h-2 bg-white/80 rounded-full shadow-sm" />
               <span className="text-gray-400 text-sm">Sistema Online</span>
             </div>
           </div>

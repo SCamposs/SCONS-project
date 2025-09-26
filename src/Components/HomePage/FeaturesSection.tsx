@@ -31,7 +31,7 @@ export default function FeaturesSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="py-16 px-4 sm:px-6 lg:px-8">
+    <section ref={ref} className="py-16 px-4 sm:px-6 lg:px-8 ">
       <div className="max-w-6xl mx-auto">
         <motion.div
           className="text-center mb-12"
@@ -39,10 +39,10 @@ export default function FeaturesSection() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 drop-shadow-lg">
             Recursos Principais
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             Descubra como o SCONS revoluciona a gestão de aplicações
             corporativas
           </p>
@@ -63,15 +63,15 @@ export default function FeaturesSection() {
               whileHover={{ y: -8, rotateY: 5 }}
               style={{ perspective: "1000px" }}
             >
-              <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg rounded-2xl p-6 shadow-xl hover:shadow-purple-500/20 transition-all duration-500 border border-gray-200/50 dark:border-gray-700/50 h-full relative overflow-hidden">
+              <div className="bg-gray-900/90 backdrop-blur-lg rounded-2xl p-6 shadow-xl hover:shadow-white/10 transition-all duration-500 border border-white/20 h-full relative overflow-hidden">
                 {/* Animated background gradient */}
                 <motion.div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   style={{
                     background: `linear-gradient(135deg, 
-                      rgba(59, 130, 246, 0.1) 0%, 
-                      rgba(147, 51, 234, 0.1) 50%, 
-                      rgba(236, 72, 153, 0.1) 100%)`,
+                      rgba(255, 255, 255, 0.05) 0%, 
+                      rgba(255, 255, 255, 0.1) 50%, 
+                      rgba(255, 255, 255, 0.05) 100%)`,
                   }}
                 />
 
@@ -87,14 +87,14 @@ export default function FeaturesSection() {
                   ].map((particle, i) => (
                     <motion.div
                       key={i}
-                      className="absolute w-1 h-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-0 group-hover:opacity-60"
+                      className="absolute w-1 h-1 bg-gradient-to-r from-white/60 to-gray-300/60 rounded-full opacity-0 group-hover:opacity-80 shadow-sm"
                       style={{
                         left: `${particle.left}%`,
                         top: `${particle.top}%`,
                       }}
                       animate={{
                         y: [-10, -30, -10],
-                        opacity: [0, 0.6, 0],
+                        opacity: [0, 0.8, 0],
                       }}
                       transition={{
                         duration: particle.duration,
@@ -111,23 +111,23 @@ export default function FeaturesSection() {
                     whileHover={{
                       scale: 1.2,
                       rotate: [0, -5, 5, 0],
-                      filter: "drop-shadow(0 0 15px rgba(59, 130, 246, 0.5))",
+                      filter: "drop-shadow(0 0 15px rgba(255, 255, 255, 0.3))",
                     }}
                     transition={{ duration: 0.3 }}
                   >
-                    <feature.icon className="w-12 h-12 text-blue-500" />
+                    <feature.icon className="w-12 h-12 text-white/80 drop-shadow-sm" />
                   </motion.div>
 
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-gray-300 transition-all duration-300 drop-shadow-sm">
                     {feature.title}
                   </h3>
 
-                  <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300">
+                  <p className="text-sm text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
                     {feature.description}
                   </p>
 
                   {/* Progress indicator */}
-                  <motion.div className="mt-4 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 will-change-transform" />
+                  <motion.div className="mt-4 h-1 bg-gradient-to-r from-white/60 to-gray-300/60 rounded-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 will-change-transform shadow-sm" />
                 </div>
 
                 {/* Glow effect */}
@@ -135,7 +135,7 @@ export default function FeaturesSection() {
                   className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500"
                   style={{
                     background:
-                      "radial-gradient(circle at center, rgba(59, 130, 246, 0.3), transparent 70%)",
+                      "radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent 70%)",
                     filter: "blur(20px)",
                   }}
                 />
@@ -151,11 +151,11 @@ export default function FeaturesSection() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
-          <div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl p-6 max-w-3xl mx-auto">
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+          <div className="bg-gradient-to-r from-black/40 to-gray-900/40 backdrop-blur-sm rounded-xl p-6 max-w-3xl mx-auto border border-white/10">
+            <h3 className="text-xl font-bold text-white mb-3 drop-shadow-sm">
               Simplificando a Gestão Corporativa
             </h3>
-            <p className="text-base text-gray-600 dark:text-gray-300">
+            <p className="text-base text-gray-300">
               O SCONS foi desenvolvido para eliminar a complexidade de gerenciar
               múltiplas aplicações, oferecendo uma experiência unificada, segura
               e eficiente para organizações de todos os tamanhos.

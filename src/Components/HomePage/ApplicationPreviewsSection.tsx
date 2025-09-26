@@ -108,42 +108,37 @@ const applicationPreviews: ApplicationItem[] = [
 
 export default function ApplicationPreviewsSection() {
   return (
-    <section
-      className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
-      style={{
-        background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-      }}
-    >
+    <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-black">
       {/* Blurred background version of current image */}
       <div className="absolute inset-0 overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center blur-3xl opacity-30 scale-110"
+          className="absolute inset-0 bg-cover bg-center blur-3xl opacity-10 scale-110"
           style={{
             backgroundImage: `url(${applicationPreviews[0]?.imageUrl})`,
-            filter: "blur(60px) saturate(150%)",
+            filter: "blur(60px) saturate(0%) brightness(0.3)",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/50 via-purple-800/30 to-blue-900/50" />
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/90 via-black/95 to-gray-800/90" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <div className="flex items-center justify-center mb-6">
-            <h2 className="text-3xl sm:text-4xl font-base text-white">
+            <h2 className="text-3xl sm:text-4xl font-base text-white drop-shadow-lg">
               Aplicações{" "}
               <Image
                 src="/logo-white.png"
                 alt="SCONS"
                 width={528}
                 height={121}
-                className="inline-block h-8 w-auto ml-2 mb-1"
+                className="inline-block h-8 w-auto ml-2 mb-1 drop-shadow-md"
               />
             </h2>
           </div>
-          <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full text-lg font-medium mb-6 text-white">
+          <div className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-lg font-medium mb-6 text-gray-100 shadow-lg">
             Soluções Corporativas
           </div>
-          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Explore nosso ecossistema completo de aplicações empresariais
             desenvolvidas para otimizar sua operação.
           </p>

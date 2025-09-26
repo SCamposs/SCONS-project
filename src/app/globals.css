@@ -1,21 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ffffff;
 }
 
 /* Color scheme variables */
 :root {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
@@ -32,35 +25,22 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+  background: #333333;
   border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
-}
-
-@media (prefers-color-scheme: dark) {
-  ::-webkit-scrollbar-track {
-    background: #2a2a2a;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #555;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #777;
-  }
+  background: #555555;
 }
 
 /* Enhanced focus styles */
 *:focus-visible {
-  outline: 2px solid #3b82f6;
+  outline: 2px solid rgba(255, 255, 255, 0.6);
   outline-offset: 2px;
 }
 
@@ -102,12 +82,12 @@ body {
 }
 
 /* Custom glow effects */
-.glow-blue {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+.glow-white {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
-.glow-purple {
-  box-shadow: 0 0 20px rgba(147, 51, 234, 0.3);
+.glow-gray {
+  box-shadow: 0 0 20px rgba(156, 163, 175, 0.3);
 }
 
 /* Perspective for 3D effects */
@@ -138,14 +118,23 @@ body {
 @keyframes pulse-glow {
   0%,
   100% {
-    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
   }
   50% {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.8),
-      0 0 30px rgba(147, 51, 234, 0.3);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+      0 0 30px rgba(156, 163, 175, 0.2);
   }
 }
 
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Hollow Knight inspired effects */
+.soul-glow {
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+.void-text {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
