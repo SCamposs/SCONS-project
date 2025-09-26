@@ -138,3 +138,24 @@ body {
 .void-text {
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
+
+/* Enhanced carousel animations */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes float-gentle {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-float-gentle {
+  animation: float-gentle 6s ease-in-out infinite;
+}
