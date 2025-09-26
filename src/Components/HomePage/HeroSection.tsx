@@ -123,7 +123,7 @@ export default function HeroSection() {
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
           >
-            <span className="relative z-10 flex items-center justify-center">
+            <span className="relative z-10 flex items-center justify-center will-change-transform">
               Acessar SCONS
               <motion.span
                 className="inline-block ml-3"

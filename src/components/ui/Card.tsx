@@ -13,7 +13,7 @@ interface CardContentProps {
 function Card({ children, className = "" }: CardProps) {
   return (
     <div
-      className={`bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm ${className}`}
+      className={`bg-white dark:bg-gray-800 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-sm ${className}`}
     >
       {children}
     </div>

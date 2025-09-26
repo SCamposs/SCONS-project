@@ -197,7 +197,7 @@ const MergedApplicationCarousel = ({
       </div>
 
       <div
-        className="group relative overflow-visible h-[600px]"
+        className="group relative overflow-visible h-[600px] rounded-2xl"
         style={{
           perspective: "1500px",
           perspectiveOrigin: "center center",
@@ -214,7 +214,7 @@ const MergedApplicationCarousel = ({
             return (
               <div
                 key={item.id}
-                className="absolute w-full max-w-xs transition-all duration-[900ms] ease-[cubic-bezier(0.23,1,0.32,1)] cursor-pointer hover:duration-300"
+                className="absolute w-full max-w-xs transition-all duration-[900ms] ease-[cubic-bezier(0.23,1,0.32,1)] cursor-pointer hover:duration-300 rounded-2xl"
                 onClick={() => handleCardClick(index)}
                 style={{
                   transform: cardStyle.transform,
@@ -227,7 +227,7 @@ const MergedApplicationCarousel = ({
                 }}
               >
                 <Card
-                  className={`relative overflow-hidden bg-gray-900/95 backdrop-blur-md h-[500px] border flex flex-col group rounded-2xl transition-all duration-700 ${
+                  className={`relative overflow-hidden bg-gray-900/95 backdrop-blur-md h-[500px] border flex flex-col group transition-all duration-700 ${
                     index === active
                       ? "border-white/20 shadow-[0_25px_60px_-12px_rgba(255,255,255,0.15),0_0_0_1px_rgba(255,255,255,0.25),inset_0_1px_0_rgba(255,255,255,0.1)] hover:shadow-[0_35px_80px_-12px_rgba(255,255,255,0.2)]"
                       : "border-white/5 shadow-[0_20px_40px_-5px_rgba(0,0,0,0.6),0_10px_20px_-5px_rgba(0,0,0,0.4)] hover:border-white/15 hover:shadow-[0_30px_60px_-5px_rgba(255,255,255,0.08)]"
@@ -245,7 +245,7 @@ const MergedApplicationCarousel = ({
                     }`}
                   />
                   <div
-                    className="relative h-64 overflow-hidden bg-gradient-to-br from-black to-gray-900 rounded-t-2xl"
+                    className="relative h-64 overflow-hidden bg-gradient-to-br from-black to-gray-900 rounded-t-3xl"
                     style={{
                       backgroundImage: `url(${item.imageUrl})`,
                       backgroundSize: "cover",
