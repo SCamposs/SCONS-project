@@ -21,10 +21,6 @@ interface ThreeDCarouselProps {
   autoRotate?: boolean;
   rotateInterval?: number;
   cardHeight?: number;
-  title?: string;
-  subtitle?: string;
-  tagline?: string;
-  isMobileSwipe?: boolean;
 }
 
 const ThreeDCarousel = ({
@@ -32,10 +28,6 @@ const ThreeDCarousel = ({
   autoRotate = true,
   rotateInterval = 4000,
   cardHeight = 500,
-  title = "From Textile to Intelligence",
-  subtitle = "Customer Cases",
-  tagline = "Explore how our textile sensor technology is revolutionizing multiple industries with intelligent fabric solutions tailored to specific needs.",
-  isMobileSwipe = true,
 }: ThreeDCarouselProps) => {
   const [active, setActive] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
