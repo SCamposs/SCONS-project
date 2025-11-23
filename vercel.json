@@ -2,10 +2,5 @@
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "framework": "nextjs",
-  "installCommand": "npm install",
-  "functions": {
-    "src/app/**/*.ts": {
-      "runtime": "nodejs22.x"
-    }
-  }
+  "installCommand": "npm install"
 }
