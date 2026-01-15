@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import Image from "next/image";
 import MergedApplicationCarousel from "../ui/MergedApplicationCarousel";
 
@@ -106,7 +107,7 @@ const applicationPreviews: ApplicationItem[] = [
   },
 ];
 
-export default function ApplicationPreviewsSection() {
+function ApplicationPreviewsSection() {
   return (
     <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-black">
       {/* Blurred background version of current image */}
@@ -132,6 +133,7 @@ export default function ApplicationPreviewsSection() {
                 width={528}
                 height={121}
                 className="inline-block h-8 w-auto ml-2 mb-1 drop-shadow-md"
+                loading="lazy"
               />
             </h2>
           </div>
@@ -153,3 +155,5 @@ export default function ApplicationPreviewsSection() {
     </section>
   );
 }
+
+export default memo(ApplicationPreviewsSection);

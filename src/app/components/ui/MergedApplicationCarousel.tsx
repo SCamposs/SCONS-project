@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, TouchEvent } from "react";
+import React, { useEffect, useState, TouchEvent, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Card, CardContent } from "../ui/Card";
 
@@ -85,16 +85,16 @@ const MergedApplicationCarousel = ({
     return () => window.removeEventListener("keydown", handleKeyPress);
   }, [isInView, items.length]);
 
-  const onTouchStart = (e: TouchEvent) => {
+  const onTouchStart = useCallback((e: TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX);
     setTouchEnd(null);
-  };
+  }, []);
 
-  const onTouchMove = (e: TouchEvent) => {
+  const onTouchMove = useCallback((e: TouchEvent) => {
     setTouchEnd(e.targetTouches[0].clientX);
-  };
+  }, []);
 
-  const onTouchEnd = () => {
+  const onTouchEnd = useCallback(() => {
     if (!touchStart || !touchEnd) return;
     const distance = touchStart - touchEnd;
     if (distance > minSwipeDistance) {
@@ -102,9 +102,9 @@ const MergedApplicationCarousel = ({
     } else if (distance < -minSwipeDistance) {
       setActive((prev) => (prev - 1 + items.length) % items.length);
     }
-  };
+  }, [touchStart, touchEnd, items.length]);
 
-  const getCardTransform = (index: number) => {
+  const getCardTransform = useCallback((index: number) => {
     const diff = (index - active + items.length) % items.length;
     const totalItems = items.length;
 
@@ -163,15 +163,15 @@ const MergedApplicationCarousel = ({
         filter: "brightness(0.4) saturate(0.5)",
       };
     }
-  };
+  }, [active, items.length]);
 
-  const handleCardClick = (index: number) => {
+  const handleCardClick = useCallback((index: number) => {
     if (index !== active) {
       setActive(index);
     }
-  };
+  }, [active]);
 
-  const handleArrowClick = (
+  const handleArrowClick = useCallback((
     direction: "prev" | "next",
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
@@ -182,7 +182,7 @@ const MergedApplicationCarousel = ({
     }
     // Remove focus after click
     (event.target as HTMLButtonElement).blur();
-  };
+  }, [items.length]);
 
   return (
     <div className="w-full max-w-7xl mx-auto px-8">

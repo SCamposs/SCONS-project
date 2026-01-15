@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, memo } from "react";
 import { Lock, Users, Smartphone } from "lucide-react";
 
 const features = [
@@ -26,7 +26,7 @@ const features = [
   },
 ];
 
-export default function FeaturesSection() {
+function FeaturesSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -52,16 +52,15 @@ export default function FeaturesSection() {
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className="group relative will-change-transform"
-              initial={{ opacity: 0, y: 50, rotateX: -15 }}
+              className="group relative"
+              initial={{ opacity: 0, y: 50 }}
               animate={
                 isInView
-                  ? { opacity: 1, y: 0, rotateX: 0 }
-                  : { opacity: 0, y: 50, rotateX: -15 }
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: 50 }
               }
               transition={{ duration: 0.8, delay: index * 0.2 }}
-              whileHover={{ y: -8, rotateY: 5 }}
-              style={{ perspective: "1000px" }}
+              whileHover={{ y: -8 }}
             >
               <div className="bg-gray-900/90 backdrop-blur-lg rounded-2xl p-6 shadow-xl hover:shadow-white/10 transition-all duration-500 border border-white/20 h-full relative overflow-hidden">
                 {/* Animated background gradient */}
@@ -75,15 +74,12 @@ export default function FeaturesSection() {
                   }}
                 />
 
-                {/* Floating particles effect */}
+                {/* Floating particles effect - reduced from 6 to 3 for performance */}
                 <div className="absolute inset-0 overflow-hidden rounded-3xl">
                   {[
-                    { left: 15, top: 20, duration: 3.2, delay: 0.3 },
-                    { left: 85, top: 15, duration: 4.1, delay: 1.2 },
-                    { left: 25, top: 75, duration: 3.8, delay: 0.8 },
-                    { left: 70, top: 60, duration: 4.5, delay: 1.6 },
-                    { left: 45, top: 35, duration: 3.5, delay: 0.5 },
-                    { left: 90, top: 85, duration: 4.2, delay: 1.0 },
+                    { left: 15, top: 20, duration: 3.5, delay: 0.3 },
+                    { left: 85, top: 60, duration: 4.2, delay: 1.0 },
+                    { left: 45, top: 75, duration: 3.8, delay: 0.8 },
                   ].map((particle, i) => (
                     <motion.div
                       key={i}
@@ -91,6 +87,7 @@ export default function FeaturesSection() {
                       style={{
                         left: `${particle.left}%`,
                         top: `${particle.top}%`,
+                        willChange: 'transform, opacity',
                       }}
                       animate={{
                         y: [-10, -30, -10],
@@ -166,3 +163,5 @@ export default function FeaturesSection() {
     </section>
   );
 }
+
+export default memo(FeaturesSection);

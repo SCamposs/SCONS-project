@@ -2,11 +2,12 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { memo, useMemo } from "react";
 
 function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const footerLinks = {
+  const footerLinks = useMemo(() => ({
     produto: [
       { name: "Recursos", href: "#" },
       { name: "Segurança", href: "#" },
@@ -31,7 +32,7 @@ function Footer() {
       { name: "Cookies", href: "#" },
       { name: "LGPD", href: "#" },
     ],
-  };
+  }), []);
 
   return (
     <footer className="bg-black border-t border-white/10 text-white">
@@ -53,6 +54,7 @@ function Footer() {
                   width={528}
                   height={151}
                   className="mr-3 h-8 w-auto -translate-x-[6px]"
+                  loading="lazy"
                 />
               </div>
               <p className="text-gray-400 mb-4 max-w-md text-sm">
@@ -175,4 +177,5 @@ function Footer() {
   );
 }
 
-export { Footer };
+const MemoizedFooter = memo(Footer);
+export { MemoizedFooter as Footer };

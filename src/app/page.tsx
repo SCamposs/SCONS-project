@@ -1,8 +1,29 @@
+import dynamic from "next/dynamic";
 import HeroSection from "./components/HomePage/HeroSection";
-import FeaturesSection from "./components/HomePage/FeaturesSection";
-import ApplicationPreviewsSection from "./components/HomePage/ApplicationPreviewsSection";
-import { Footer } from "./components/layout/Footer";
 import BackgroundAnimation from "./components/animations/BackgroundAnimation";
+
+// Lazy load sections below the fold for better initial performance
+const FeaturesSection = dynamic(
+  () => import("./components/HomePage/FeaturesSection"),
+  {
+    loading: () => <div className="min-h-screen" />,
+  }
+);
+const ApplicationPreviewsSection = dynamic(
+  () => import("./components/HomePage/ApplicationPreviewsSection"),
+  {
+    loading: () => <div className="min-h-screen" />,
+  }
+);
+const Footer = dynamic(
+  () =>
+    import("./components/layout/Footer").then((mod) => ({
+      default: mod.Footer,
+    })),
+  {
+    loading: () => <div className="min-h-[200px]" />,
+  }
+);
 
 export default function Home() {
   return (
@@ -14,7 +35,7 @@ export default function Home() {
       <BackgroundAnimation />
 
       {/* Content */}
-      <div className="relative z-10 will-change-scroll">
+      <div className="relative z-10\">
         <HeroSection />
         <FeaturesSection />
         <ApplicationPreviewsSection />

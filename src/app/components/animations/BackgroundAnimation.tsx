@@ -1,6 +1,8 @@
 "use client";
 
-export default function BackgroundAnimation() {
+import { memo } from "react";
+
+function BackgroundAnimation() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Simplified background animation using CSS gradients and animations */}
@@ -16,3 +18,5 @@ export default function BackgroundAnimation() {
     </div>
   );
 }
+
+export default memo(BackgroundAnimation);

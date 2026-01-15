@@ -1,12 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import Image from "next/image";
 import { Zap, Shield, Headphones, ArrowRight, Play } from "lucide-react";
 
 export default function HeroSection() {
   const [isHovered, setIsHovered] = useState(false);
+
+  const handleHoverStart = useCallback(() => setIsHovered(true), []);
+  const handleHoverEnd = useCallback(() => setIsHovered(false), []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -19,7 +22,7 @@ export default function HeroSection() {
       >
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <motion.div
-            className="flex items-center space-x-2 will-change-transform"
+            className="flex items-center space-x-2"
             whileHover={{ scale: 1.05 }}
           >
             <Image
@@ -28,6 +31,7 @@ export default function HeroSection() {
               width={428}
               height={151}
               className="h-8 w-auto drop-shadow-lg"
+              priority
             />
           </motion.div>
 
@@ -40,11 +44,11 @@ export default function HeroSection() {
       {/* Floating Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute top-1/4 -left-20 w-72 h-72 bg-gradient-to-r from-white/5 to-gray-300/10 rounded-full blur-3xl will-change-transform"
+          className="absolute top-1/4 -left-20 w-72 h-72 bg-gradient-to-r from-white/5 to-gray-300/10 rounded-full blur-3xl"
+          style={{ willChange: 'transform' }}
           animate={{
             x: [0, 50, 0],
             y: [0, -30, 0],
-            scale: [1, 1.1, 1],
           }}
           transition={{
             duration: 20,
@@ -53,11 +57,11 @@ export default function HeroSection() {
           }}
         />
         <motion.div
-          className="absolute bottom-1/4 -right-20 w-64 h-64 bg-gradient-to-r from-gray-400/8 to-white/8 rounded-full blur-3xl will-change-transform"
+          className="absolute bottom-1/4 -right-20 w-64 h-64 bg-gradient-to-r from-gray-400/8 to-white/8 rounded-full blur-3xl"
+          style={{ willChange: 'transform' }}
           animate={{
             x: [0, -40, 0],
             y: [0, 40, 0],
-            scale: [1, 0.9, 1],
           }}
           transition={{
             duration: 25,
@@ -82,6 +86,7 @@ export default function HeroSection() {
             width={428}
             height={98}
             className="mx-auto drop-shadow-2xl h-16 w-auto"
+            priority
           />
         </motion.div>
 
@@ -117,13 +122,13 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           <motion.button
-            className="group px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-bold text-lg shadow-2xl hover:shadow-white/10 transition-all duration-300 min-w-[200px] border border-white/30 will-change-transform relative overflow-hidden hover:bg-white/20"
+            className="group px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-bold text-lg shadow-2xl hover:shadow-white/10 transition-all duration-300 min-w-[200px] border border-white/30 relative overflow-hidden hover:bg-white/20"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            onHoverStart={() => setIsHovered(true)}
-            onHoverEnd={() => setIsHovered(false)}
+            onHoverStart={handleHoverStart}
+            onHoverEnd={handleHoverEnd}
           >
-            <span className="relative z-10 flex items-center justify-center will-change-transform">
+            <span className="relative z-10 flex items-center justify-center">
               Acessar SCONS
               <motion.span
                 className="inline-block ml-3"
@@ -137,7 +142,7 @@ export default function HeroSection() {
           </motion.button>
 
           <motion.button
-            className="px-8 py-4 bg-black/30 backdrop-blur-md border-2 border-white/20 text-white rounded-xl font-bold text-lg hover:bg-black/50 hover:border-white/40 transition-all duration-300 min-w-[200px] will-change-transform"
+            className="px-8 py-4 bg-black/30 backdrop-blur-md border-2 border-white/20 text-white rounded-xl font-bold text-lg hover:bg-black/50 hover:border-white/40 transition-all duration-300 min-w-[200px]"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -162,7 +167,7 @@ export default function HeroSection() {
           ].map((stat, index) => (
             <motion.div
               key={index}
-              className="text-center p-4 bg-black/20 backdrop-blur-md rounded-xl border border-white/20 will-change-transform hover:bg-black/30"
+              className="text-center p-4 bg-black/20 backdrop-blur-md rounded-xl border border-white/20 hover:bg-black/30"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
@@ -187,7 +192,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 1.2 }}
         >
           <motion.div
-            className="flex flex-col items-center cursor-pointer group will-change-transform"
+            className="flex flex-col items-center cursor-pointer group"
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             whileHover={{ scale: 1.1 }}
