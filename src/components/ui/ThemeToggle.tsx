@@ -26,7 +26,7 @@ export function ThemeToggle({ className, ...props }: ThemeToggleProps) {
       {...props}
     >
       {theme === "light" ? (
-        <Moon className="w-5 h-5 transition-transform duration-300 group-hover:rotate-[20deg] group-hover:scale-110" />
+        <Moon className="w-5 h-5 transition-transform duration-300 group-hover:rotate-20 group-hover:scale-110" />
       ) : (
         <Sun className="w-5 h-5 transition-transform duration-300 group-hover:rotate-180" />
       )}

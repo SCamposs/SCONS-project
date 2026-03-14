@@ -4,6 +4,7 @@ import { memo } from "react";
 import Image from "next/image";
 
 import { MergedApplicationCarousel } from "@/components/ui/MergedApplicationCarousel";
+import { useTheme } from "@/contexts/theme-context";
 
 interface ApplicationItem {
   id: number;
@@ -109,38 +110,48 @@ const APPLICATION_PREVIEWS: ApplicationItem[] = [
 ];
 
 function ApplicationPreviewsSection() {
+  const { theme } = useTheme();
+
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-black">
+    <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-background">
       <div className="absolute inset-0 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center scale-110"
           style={{
             backgroundImage: `url(${APPLICATION_PREVIEWS[0]?.imageUrl})`,
-            filter: "blur(60px) saturate(0%) brightness(0.3)",
+            filter: `blur(60px) saturate(0%) brightness(${theme === "dark" ? "0.3" : "0.85"})`,
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/90 via-black/95 to-gray-800/90" />
+        <div className="absolute inset-0 bg-gradient-to-br from-surface-raised/80 via-background/90 to-surface/80" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <div className="flex items-center justify-center mb-6">
-            <h2 className="text-3xl sm:text-4xl font-normal text-white drop-shadow-lg">
+            <h2 className="text-3xl sm:text-4xl font-normal text-foreground drop-shadow-sm">
               Aplicações{" "}
               <Image
                 src="/logo-white.png"
                 alt="SCONS"
                 width={528}
                 height={121}
-                className="inline-block h-8 w-auto ml-2 mb-1 drop-shadow-md"
+                className="h-8 w-auto ml-2 mb-1 hidden dark:inline-block drop-shadow-md"
+                loading="lazy"
+              />
+              <Image
+                src="/logo.png"
+                alt="SCONS"
+                width={528}
+                height={121}
+                className="h-8 w-auto ml-2 mb-1 inline-block dark:hidden drop-shadow-sm"
                 loading="lazy"
               />
             </h2>
           </div>
-          <div className="inline-block px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-lg font-medium mb-6 text-gray-100 shadow-lg">
+          <div className="inline-block px-6 py-3 bg-foreground/10 backdrop-blur-sm border border-foreground/20 rounded-full text-lg font-medium mb-6 text-foreground shadow-lg">
             Soluções Corporativas
           </div>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-foreground-secondary max-w-3xl mx-auto leading-relaxed">
             Explore nosso ecossistema completo de aplicações empresariais
             desenvolvidas para otimizar sua operação.
           </p>
