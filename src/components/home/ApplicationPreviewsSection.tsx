@@ -2,7 +2,8 @@
 
 import { memo } from "react";
 import Image from "next/image";
-import MergedApplicationCarousel from "../ui/MergedApplicationCarousel";
+
+import { MergedApplicationCarousel } from "@/components/ui/MergedApplicationCarousel";
 
 interface ApplicationItem {
   id: number;
@@ -14,7 +15,7 @@ interface ApplicationItem {
   link: string;
 }
 
-const applicationPreviews: ApplicationItem[] = [
+const APPLICATION_PREVIEWS: ApplicationItem[] = [
   {
     id: 1,
     title: "Dashboard Executivo",
@@ -110,12 +111,11 @@ const applicationPreviews: ApplicationItem[] = [
 function ApplicationPreviewsSection() {
   return (
     <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-black">
-      {/* Blurred background version of current image */}
       <div className="absolute inset-0 overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center blur-3xl opacity-10 scale-110"
+          className="absolute inset-0 bg-cover bg-center scale-110"
           style={{
-            backgroundImage: `url(${applicationPreviews[0]?.imageUrl})`,
+            backgroundImage: `url(${APPLICATION_PREVIEWS[0]?.imageUrl})`,
             filter: "blur(60px) saturate(0%) brightness(0.3)",
           }}
         />
@@ -125,7 +125,7 @@ function ApplicationPreviewsSection() {
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <div className="flex items-center justify-center mb-6">
-            <h2 className="text-3xl sm:text-4xl font-base text-white drop-shadow-lg">
+            <h2 className="text-3xl sm:text-4xl font-normal text-white drop-shadow-lg">
               Aplicações{" "}
               <Image
                 src="/logo-white.png"
@@ -147,7 +147,7 @@ function ApplicationPreviewsSection() {
         </div>
 
         <MergedApplicationCarousel
-          items={applicationPreviews}
+          items={APPLICATION_PREVIEWS}
           autoRotate={true}
           rotateInterval={5000}
         />

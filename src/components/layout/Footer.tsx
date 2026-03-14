@@ -1,45 +1,45 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Image from "next/image";
 import { memo, useMemo } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+
+const FOOTER_LINKS = {
+  produto: [
+    { name: "Recursos", href: "#" },
+    { name: "Segurança", href: "#" },
+    { name: "Integrações", href: "#" },
+    { name: "Atualizações", href: "#" },
+  ],
+  empresa: [
+    { name: "Sobre Nós", href: "#" },
+    { name: "Carreiras", href: "#" },
+    { name: "Contato", href: "#" },
+    { name: "Blog", href: "#" },
+  ],
+  suporte: [
+    { name: "Documentação", href: "#" },
+    { name: "Central de Ajuda", href: "#" },
+    { name: "Status", href: "#" },
+    { name: "API", href: "#" },
+  ],
+  legal: [
+    { name: "Privacidade", href: "#" },
+    { name: "Termos de Uso", href: "#" },
+    { name: "Cookies", href: "#" },
+    { name: "LGPD", href: "#" },
+  ],
+} as const;
+
+const SOCIAL_LINKS = ["LinkedIn", "Twitter", "GitHub"] as const;
 
 function Footer() {
-  const currentYear = new Date().getFullYear();
-
-  const footerLinks = useMemo(() => ({
-    produto: [
-      { name: "Recursos", href: "#" },
-      { name: "Segurança", href: "#" },
-      { name: "Integrações", href: "#" },
-      { name: "Atualizações", href: "#" },
-    ],
-    empresa: [
-      { name: "Sobre Nós", href: "#" },
-      { name: "Carreiras", href: "#" },
-      { name: "Contato", href: "#" },
-      { name: "Blog", href: "#" },
-    ],
-    suporte: [
-      { name: "Documentação", href: "#" },
-      { name: "Central de Ajuda", href: "#" },
-      { name: "Status", href: "#" },
-      { name: "API", href: "#" },
-    ],
-    legal: [
-      { name: "Privacidade", href: "#" },
-      { name: "Termos de Uso", href: "#" },
-      { name: "Cookies", href: "#" },
-      { name: "LGPD", href: "#" },
-    ],
-  }), []);
+  const currentYear = useMemo(() => new Date().getFullYear(), []);
 
   return (
-    <footer className="bg-black border-t border-white/10 text-white">
+    <footer className="bg-black dark:bg-black border-t border-white/10 text-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Main footer content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
-          {/* Brand section */}
           <div className="lg:col-span-2">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -61,10 +61,8 @@ function Footer() {
                 Sistema de navegação otimizada para aplicações corporativas.
                 Simplifique o acesso e otimize a produtividade da sua equipe.
               </p>
-
-              {/* Social links */}
               <div className="flex space-x-3">
-                {["LinkedIn", "Twitter", "GitHub"].map((social, index) => (
+                {SOCIAL_LINKS.map((social, index) => (
                   <motion.a
                     key={social}
                     href="#"
@@ -75,6 +73,7 @@ function Footer() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
+                    aria-label={social}
                   >
                     <span className="text-xs font-bold text-white">
                       {social.charAt(0)}
@@ -85,39 +84,40 @@ function Footer() {
             </motion.div>
           </div>
 
-          {/* Links sections */}
-          {Object.entries(footerLinks).map(
-            ([category, links], categoryIndex) => (
-              <motion.div
-                key={category}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <h4 className="font-semibold text-white mb-3 capitalize text-sm">
-                  {category}
-                </h4>
-                <ul className="space-y-2">
-                  {links.map((link) => (
-                    <li key={link.name}>
-                      <motion.a
-                        href={link.href}
-                        className="text-gray-400 hover:text-gray-200 transition-colors duration-300 text-sm"
-                        whileHover={{ x: 5 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        {link.name}
-                      </motion.a>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            )
-          )}
+          {(
+            Object.entries(FOOTER_LINKS) as [
+              string,
+              readonly { name: string; href: string }[],
+            ][]
+          ).map(([category, links], categoryIndex) => (
+            <motion.div
+              key={category}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <h4 className="font-semibold text-white mb-3 capitalize text-sm">
+                {category}
+              </h4>
+              <ul className="space-y-2">
+                {links.map((link) => (
+                  <li key={link.name}>
+                    <motion.a
+                      href={link.href}
+                      className="text-gray-400 hover:text-gray-200 transition-colors duration-300 text-sm"
+                      whileHover={{ x: 5 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {link.name}
+                    </motion.a>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
         </div>
 
-        {/* Newsletter section */}
         <motion.div
           className="mt-10 pt-6 border-t border-white/10"
           initial={{ opacity: 0, y: 20 }}
@@ -132,7 +132,6 @@ function Footer() {
                 Receba as últimas novidades e atualizações do SCONS
               </p>
             </div>
-
             <div className="flex flex-col sm:flex-row gap-3">
               <input
                 type="email"
@@ -150,7 +149,6 @@ function Footer() {
           </div>
         </motion.div>
 
-        {/* Bottom section */}
         <motion.div
           className="mt-8 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center"
           initial={{ opacity: 0, y: 20 }}
@@ -161,7 +159,6 @@ function Footer() {
           <p className="text-gray-400 text-sm">
             © {currentYear} SCONS. Todos os direitos reservados.
           </p>
-
           <div className="flex items-center space-x-6 mt-4 md:mt-0">
             <span className="text-gray-400 text-sm">
               Desenvolvido por Soares Campos

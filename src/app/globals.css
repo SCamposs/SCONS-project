@@ -1,50 +1,119 @@
 @import "tailwindcss";
 
+/* Enable class-based dark mode for Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ─── Design Tokens ───────────────────────────────────────────────── */
+
 :root {
-  --background: #000000;
-  --foreground: #ffffff;
+  /* Brand */
+  --brand: #2563eb;
+  --brand-hover: #1d4ed8;
+  --brand-focus: #3b82f6;
+
+  /* Background / surface */
+  --background: #ffffff;
+  --surface: #f9fafb;
+  --surface-raised: #f3f4f6;
+
+  /* Border */
+  --border: #e5e7eb;
+  --border-muted: #d1d5db;
+
+  /* Foreground / text */
+  --foreground: #111827;
+  --foreground-secondary: #4b5563;
+  --foreground-muted: #9ca3af;
+
+  /* Scrollbar */
+  --scrollbar-thumb: #d1d5db;
+  --scrollbar-thumb-hover: #9ca3af;
 }
 
-/* Color scheme variables */
-:root {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+.dark {
+  --brand: #3b82f6;
+  --brand-hover: #2563eb;
+  --brand-focus: #60a5fa;
+
+  --background: #000000;
+  --surface: #111827;
+  --surface-raised: #1f2937;
+
+  --border: #1f2937;
+  --border-muted: #374151;
+
+  --foreground: #ffffff;
+  --foreground-secondary: #d1d5db;
+  --foreground-muted: #6b7280;
+
+  --scrollbar-thumb: #374151;
+  --scrollbar-thumb-hover: #4b5563;
 }
+
+/* ─── Tailwind v4 Theme Registration ────────────────────────────────── */
+
+@theme inline {
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-focus: var(--brand-focus);
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-border: var(--border);
+  --color-border-muted: var(--border-muted);
+  --color-foreground: var(--foreground);
+  --color-foreground-secondary: var(--foreground-secondary);
+  --color-foreground-muted: var(--foreground-muted);
+}
+
+/* ─── Base Styles ─────────────────────────────────────────────────── */
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-montserrat), "Montserrat", "Inter", "Segoe UI",
-    system-ui, -apple-system, sans-serif;
+  font-family:
+    var(--font-montserrat),
+    "Montserrat",
+    "Inter",
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    sans-serif;
   scroll-behavior: smooth;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
-/* Custom scrollbar */
+/* ─── Custom Scrollbar ────────────────────────────────────────────── */
+
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333333;
+  background: var(--scrollbar-thumb);
   border-radius: 4px;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555555;
+  background: var(--scrollbar-thumb-hover);
 }
 
-/* Enhanced focus styles */
+/* ─── Focus ───────────────────────────────────────────────────────── */
+
 *:focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline: 2px solid var(--brand);
   outline-offset: 2px;
 }
 
-/* Glass morphism effects */
+/* ─── Glass Effects ───────────────────────────────────────────────── */
+
 .glass {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
@@ -59,7 +128,8 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* GPU acceleration for animations - only when needed */
+/* ─── GPU Acceleration ────────────────────────────────────────────── */
+
 @media (prefers-reduced-motion: no-preference) {
   .gpu-accelerate {
     transform: translateZ(0);
@@ -68,7 +138,8 @@ body {
   }
 }
 
-/* Floating animation */
+/* ─── Animations ──────────────────────────────────────────────────── */
+
 @keyframes float {
   0%,
   100% {
@@ -83,14 +154,14 @@ body {
   animation: float 3s ease-in-out infinite;
 }
 
-/* Pulse glow animation */
 @keyframes pulse-glow {
   0%,
   100% {
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
   }
   50% {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+    box-shadow:
+      0 0 20px rgba(255, 255, 255, 0.5),
       0 0 30px rgba(156, 163, 175, 0.2);
   }
 }
@@ -99,16 +170,6 @@ body {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
-/* Hollow Knight inspired effects */
-.soul-glow {
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
-}
-
-.void-text {
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-/* Enhanced carousel animations */
 @keyframes shimmer {
   100% {
     transform: translateX(100%);
@@ -127,4 +188,14 @@ body {
 
 .animate-float-gentle {
   animation: float-gentle 6s ease-in-out infinite;
+}
+
+/* ─── Decorative ──────────────────────────────────────────────────── */
+
+.soul-glow {
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+.void-text {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
