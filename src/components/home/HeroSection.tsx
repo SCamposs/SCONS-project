@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { Zap, Shield, Headphones, ArrowRight, Play } from "lucide-react";
 
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
@@ -14,7 +15,12 @@ const STATS = [
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden bg-white dark:bg-black">
-      <nav className="absolute top-0 left-0 right-0 z-20 p-4 backdrop-blur-sm bg-white/80 dark:bg-black/20 border-b border-gray-200 dark:border-white/10">
+      <motion.nav
+        className="absolute top-0 left-0 right-0 z-20 p-4 backdrop-blur-sm bg-white/80 dark:bg-black/20 border-b border-gray-200 dark:border-white/10"
+        initial={{ opacity: 0, y: -12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+      >
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <Image
@@ -45,7 +51,7 @@ export default function HeroSection() {
             </a>
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 -left-20 w-72 h-72 bg-gradient-to-r from-white/5 to-gray-300/10 dark:from-white/5 dark:to-gray-300/10 rounded-full blur-3xl opacity-50" />
@@ -53,7 +59,12 @@ export default function HeroSection() {
       </div>
 
       <div className="max-w-5xl mx-auto text-center relative z-10">
-        <div className="mb-6">
+        <motion.div
+          className="mb-6"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+        >
           <Image
             src="/logo-white.png"
             alt="SCONS Logo"
@@ -70,23 +81,38 @@ export default function HeroSection() {
             className="mx-auto drop-shadow-2xl h-16 w-auto dark:hidden block"
             priority
           />
-        </div>
+        </motion.div>
 
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-tight drop-shadow-lg">
+        <motion.h1
+          className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-tight drop-shadow-lg"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+        >
           <span className="block text-lg sm:text-xl lg:text-2xl font-medium text-gray-700 dark:text-gray-300 opacity-95">
             Soares Campos Optimized Navigation System
           </span>
-        </h1>
+        </motion.h1>
 
-        <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+        <motion.p
+          className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
+        >
           Plataforma unificada que conecta, gerencia e otimiza todas as suas
           aplicações empresariais.
           <span className="block mt-1 text-base text-gray-600 dark:text-gray-400">
             Controle total com acesso hierárquico inteligente
           </span>
-        </p>
+        </motion.p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <motion.div
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.4 }}
+        >
           <a
             href="/login"
             className="group px-8 py-4 bg-brand dark:bg-white/10 backdrop-blur-sm text-white rounded-xl font-bold text-lg shadow-2xl hover:shadow-lg transition-all min-w-[200px] border border-brand-hover dark:border-white/30 relative overflow-hidden hover:bg-brand-hover dark:hover:bg-white/20"
@@ -103,13 +129,20 @@ export default function HeroSection() {
               <Play className="ml-2 w-4 h-4" />
             </span>
           </button>
-        </div>
+        </motion.div>
 
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
-          {STATS.map((stat) => (
-            <div
+          {STATS.map((stat, index) => (
+            <motion.div
               key={stat.label}
               className="text-center p-4 bg-white/80 dark:bg-black/20 backdrop-blur-md rounded-xl border border-gray-200 dark:border-white/20 hover:bg-gray-50 dark:hover:bg-black/30 transition-colors"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.45,
+                ease: "easeOut",
+                delay: 0.5 + index * 0.1,
+              }}
             >
               <div className="mb-2 flex justify-center">
                 <stat.icon className="w-6 h-6 text-gray-700 dark:text-white/80" />
@@ -120,7 +153,7 @@ export default function HeroSection() {
               <div className="text-gray-700 dark:text-gray-300 font-medium text-sm">
                 {stat.label}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -3,6 +3,8 @@
 import { memo } from "react";
 import Image from "next/image";
 
+import { motion } from "framer-motion";
+
 import { MergedApplicationCarousel } from "@/components/ui/MergedApplicationCarousel";
 import { useTheme } from "@/contexts/theme-context";
 
@@ -126,7 +128,13 @@ function ApplicationPreviewsSection() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
           <div className="flex items-center justify-center mb-6">
             <h2 className="text-3xl sm:text-4xl font-normal text-foreground drop-shadow-sm">
               Aplicações{" "}
@@ -155,13 +163,20 @@ function ApplicationPreviewsSection() {
             Explore nosso ecossistema completo de aplicações empresariais
             desenvolvidas para otimizar sua operação.
           </p>
-        </div>
+        </motion.div>
 
-        <MergedApplicationCarousel
-          items={APPLICATION_PREVIEWS}
-          autoRotate={true}
-          rotateInterval={5000}
-        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <MergedApplicationCarousel
+            items={APPLICATION_PREVIEWS}
+            autoRotate={true}
+            rotateInterval={5000}
+          />
+        </motion.div>
       </div>
     </section>
   );
